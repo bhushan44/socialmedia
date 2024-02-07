@@ -23,13 +23,17 @@ export default function Signup() {
         }),
       });
       const data = await res.json();
-      console.log(data.status);
-      if (data.status !== "failure") {
+      console.log("ffdfd", data);
+      if (data.statusCode === 200) {
+        console.log(data.status);
         return navigate("/login");
       }
+
       //   navigate("/login");
-      else {
-        window.alert("somethih went wrong");
+      else if (data.statusCode === 400 && data.userExists === true) {
+        window.alert("userExits with given mail");
+      } else {
+        window.alert("fill all fields");
       }
     } catch (e) {
       console.log("nbn", e);
