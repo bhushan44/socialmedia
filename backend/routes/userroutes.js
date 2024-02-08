@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
 const user = require("../models/User");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
-
+const jstoken = (id) => {
+  return jwt.sign({ _id: id }, "mandalanagabhushan");
+};
 const getdeatils = async (req, res) => {
   const email = req.body.email;
   const name = req.body.name;
@@ -16,6 +19,7 @@ const getdeatils = async (req, res) => {
   console.log("ghgh", req.body);
   const checkuser = await user.findOne({ email: email });
   console.log(checkuser);
+
   if (checkuser) {
     return res.status(400).json({
       userExists: true,
@@ -27,9 +31,12 @@ const getdeatils = async (req, res) => {
   newuser
     .save()
     .then((doc) => {
+      const token = jstoken(doc._id);
+      console.log("token", token);
       res.status(200).json({
         status: "successs",
         statusCode: 200,
+        token: token,
         // data: {
         //   data: doc,
         // },
