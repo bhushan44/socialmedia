@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+// const user =re
 const { ObjectId } = mongoose.Schema.Types;
 const postSchema = new mongoose.Schema({
   title: {
@@ -15,7 +16,7 @@ const postSchema = new mongoose.Schema({
   },
   postedBy: {
     type: ObjectId,
-    ref: "user",
+    ref: "User",
   },
 });
 const post = mongoose.model("post", postSchema);

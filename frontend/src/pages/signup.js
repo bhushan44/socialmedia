@@ -25,7 +25,8 @@ export default function Signup() {
       const data = await res.json();
       console.log("ffdfd", data);
       if (data.statusCode === 200) {
-        console.log(data.status);
+        console.log(data);
+        localStorage.setItem("jwt", data.token);
         return navigate("/login");
       }
 
