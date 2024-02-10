@@ -12,9 +12,14 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+
   password: {
     type: String,
     required: [true, "please enter password"],
+  },
+  photo: {
+    type: String,
+    default: "no photo",
   },
 });
 const User = mongoose.model("User", userSchema);

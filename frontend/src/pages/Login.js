@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function Login() {
+export default function Login({ setuser }) {
   const [email, setmail] = useState("");
 
   const [password, setpassword] = useState("");
@@ -23,6 +23,9 @@ export default function Login() {
       if (data.status === "failure" && data.statusCode === 400) {
         return window.alert("please enter all fields");
       } else if (data.userExists === true && data.statusCode === 200) {
+        console.log(data, "data");
+        localStorage.setItem("user", data.data.user._id);
+        // setuser(localStorage.getItem("user"));
         navigate("/home");
       } else {
         window.alert("user not exists");
