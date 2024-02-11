@@ -33,29 +33,58 @@ export default function Login({ setuser }) {
     } catch (e) {}
   }
   return (
-    <div>
-      <label>enter email</label>
-
-      <input
-        type="email"
-        placeholder="mail"
-        value={email}
-        onChange={(e) => {
-          setmail(e.target.value);
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          width: "400px",
+          height: "400px",
+          boxSizing: "border-box",
+          boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+          display: "flex",
+          flexDirection: "column",
+          // alignItems: "center",
+          // justifyContent: "center",
+          padding: "40px",
+          gap: "20px",
         }}
-      ></input>
-      <br></br>
-      <label>enter your password</label>
+      >
+        <h1 style={{ textAlign: "center" }}> login</h1>
+        <div>
+          {" "}
+          <label style={{ display: "block" }}>enter email</label>
+          <input
+            style={{ width: "100%" }}
+            type="email"
+            placeholder="mail"
+            value={email}
+            onChange={(e) => {
+              setmail(e.target.value);
+            }}
+          ></input>
+        </div>
 
-      <input
-        type="text"
-        placeholder="password"
-        value={password}
-        onChange={(e) => {
-          setpassword(e.target.value);
-        }}
-      ></input>
-      <button onClick={handlesubmit}>submit</button>
+        <div>
+          <label style={{ display: "block" }}>enter your password</label>
+          <input
+            type="text"
+            placeholder="password"
+            value={password}
+            style={{ display: "block", width: "100%" }}
+            onChange={(e) => {
+              setpassword(e.target.value);
+            }}
+          ></input>
+        </div>
+
+        <button onClick={handlesubmit}>submit</button>
+      </div>
     </div>
   );
 }

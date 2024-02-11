@@ -24,8 +24,27 @@ export default function Profile() {
   }, []);
   return (
     <div>
-      profilepage
-      <img src={info.photo} alt="bhushan" width="500px" height="500px"></img>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "50px",
+        }}
+      >
+        {" "}
+        <img
+          src={info.photo}
+          alt="bhushan"
+          width="300px"
+          height="300px"
+          style={{ borderRadius: "50%" }}
+        ></img>
+        <div>
+          <h3> name:{info.name}</h3>
+          <h3> email:{info.email}</h3>
+        </div>
+      </div>
     </div>
   );
 }

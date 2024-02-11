@@ -72,26 +72,49 @@ const PostForm = () => {
   };
 
   return (
-    <div>
-      <label htmlFor="title">Title:</label>
-      <input
-        type="text"
-        id="title"
-        value={title}
-        onChange={handleTitleChange}
-      />
-      <br></br>
-      <label htmlFor="body">Body:</label>
-      <textarea id="body" value={body} onChange={handleBodyChange} />
-      <br></br>
-      <label htmlFor="image">Upload Image:</label>
-      <input
-        type="file"
-        id="image"
-        accept="image/*"
-        onChange={handleImageChange}
-      />
-      <button onClick={handleSubmit}>Submit Post</button>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          width: "400px",
+          height: "400px",
+          boxSizing: "border-box",
+          boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+          display: "flex",
+          flexDirection: "column",
+          // alignItems: "center",
+          // justifyContent: "center",
+          padding: "40px",
+        }}
+      >
+        <h1 style={{ textAlign: "center" }}> upload post</h1>
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={handleTitleChange}
+        />
+        <br></br>
+        <label htmlFor="body">Body:</label>
+        <textarea id="body" value={body} onChange={handleBodyChange} />
+        <br></br>
+        <label htmlFor="image">Upload Image:</label>
+        <input
+          type="file"
+          id="image"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+        <br></br>
+        <button onClick={handleSubmit}>Submit Post</button>
+      </div>
     </div>
   );
 };

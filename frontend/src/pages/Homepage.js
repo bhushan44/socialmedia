@@ -82,7 +82,7 @@ export default function Homepage({ user }) {
         console.log(err);
       });
   };
-  function handlecomment(text, id) {
+  function handlecomment(es, text, id) {
     fetch("http://localhost:5000/api/v1/posts/comments", {
       method: "put",
       headers: {
@@ -109,13 +109,29 @@ export default function Homepage({ user }) {
       .catch((err) => {
         console.log(err);
       });
+    es.target[0].value = "";
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "50px",
+      }}
+    >
       {data.map((e) => {
         return (
-          <>
+          <div
+            style={{
+              width: "500px",
+              height: "800px",
+              boxShadow: "4px 8px 5px 8px black",
+              boxSizing: "border-box",
+              margin: "50px",
+            }}
+          >
             <h1>
               <Link
                 to={
@@ -147,15 +163,30 @@ export default function Homepage({ user }) {
             <form
               onSubmit={(es) => {
                 es.preventDefault();
-                handlecomment(es.target[0].value, e._id);
+                handlecomment(es, es.target[0].value, e._id);
               }}
             >
-              <input type="text" placeholder="add a comment" />
+              <input
+                type="text"
+                placeholder="add a comment"
+                style={{
+                  border: "none",
+                  outline: "none",
+                  borderBottom: "2px dotted",
+                }}
+              />
             </form>
-            {e.comments.map((com) => {
-              return <h1>{com.text}</h1>;
-            })}
-          </>
+            <div
+              style={{
+                height: "100px",
+                overflowY: "scroll",
+              }}
+            >
+              {e.comments.map((com) => {
+                return <p>{com.text}</p>;
+              })}
+            </div>
+          </div>
         );
       })}
     </div>

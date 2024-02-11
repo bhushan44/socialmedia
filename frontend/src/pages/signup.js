@@ -72,48 +72,70 @@ export default function Signup() {
     }
   }
   return (
-    <div>
-      <label>enter name</label>
-      <input
-        type="text"
-        placeholder="enter your name"
-        value={name}
-        onChange={(e) => {
-          setname(e.target.value);
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          width: "400px",
+          height: "400px",
+          boxSizing: "border-box",
+          boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+          display: "flex",
+          flexDirection: "column",
+          // alignItems: "center",
+          // justifyContent: "center",
+          padding: "40px",
         }}
-      ></input>
-      <br></br>
-      <label>enter email</label>
+      >
+        <h1 style={{ textAlign: "center" }}>signup</h1>
+        <label>enter name</label>
+        <input
+          type="text"
+          placeholder="enter your name"
+          value={name}
+          onChange={(e) => {
+            setname(e.target.value);
+          }}
+        ></input>
+        {/* <br></br> */}
+        <label>enter email</label>
 
-      <input
-        type="email"
-        placeholder="mail"
-        value={email}
-        onChange={(e) => {
-          setmail(e.target.value);
-        }}
-      ></input>
-      <br></br>
-      <label>enter your password</label>
+        <input
+          type="email"
+          placeholder="mail"
+          value={email}
+          onChange={(e) => {
+            setmail(e.target.value);
+          }}
+        ></input>
+        {/* <br></br> */}
+        <label>enter your password</label>
 
-      <input
-        type="text"
-        placeholder="password"
-        value={password}
-        onChange={(e) => {
-          setpassword(e.target.value);
-        }}
-      ></input>
-      <label>upload image</label>
-      <input
-        type="file"
-        onChange={(e) => {
-          const selectedFile = e.target.files[0]; // Assuming you only allow selecting one file
-          setimage(selectedFile);
-        }}
-      />
-      <button onClick={handlesubmit}>submit</button>
-      <h1>{name}</h1>
+        <input
+          type="text"
+          placeholder="password"
+          value={password}
+          onChange={(e) => {
+            setpassword(e.target.value);
+          }}
+        ></input>
+        <label>upload image</label>
+        <input
+          type="file"
+          onChange={(e) => {
+            const selectedFile = e.target.files[0]; // Assuming you only allow selecting one file
+            setimage(selectedFile);
+          }}
+        />
+        <br></br>
+        <button onClick={handlesubmit}>submit</button>
+      </div>
     </div>
   );
 }
